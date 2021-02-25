@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-
 <head>
     <meta charset="UTF-8">
     <title>Ship of the Fools</title>
+    <script type="text/javascript" src="resources/js/loader.js"></script>
     <script type="text/javascript" src="resources/js/beverages.js"></script>
     <script type="text/javascript" src="resources/js/beverages_eng.js"></script>
     <link rel="stylesheet" type="text/css" href="resources/css/stylesheet.css">
     <script type="text/javascript" src="resources/js/dictionary.js"></script>
     <script type="text/javascript" src="resources/js/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="resources/js/model.js"></script>
-    <script type="text/javascript" src="resources/js/mathFunc.js"></script>
     <script type="text/javascript" src="resources/js/control.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Basic&display=swap" rel="stylesheet"> <!--FONT--->
@@ -30,14 +29,6 @@
 <!-------------NOT IMPLEMENTED YET-------->
 
             <img id="languageId"  onclick='switchLanguage()' src="resources/img/english.png" > <!-- Switch language--->   
-            <a href="index.html"><img class="logo" src="resources/images/logo.png"></a>
-            <div class='shoppingCartBox'>
-                <img class="shoppingCart" src="resources/images/cart.png">
-                <p class='subTotal'>Sub Total:  KR</p>  <!--？---->
-            </div>
-            <button class='loginButton' onclick=''>VIP Login</button>
-            <div class='loginButtonVIP'><a href="#" onclick=''>Hello, Bob &nbsp  300 credits &nbsp </a>  <a href="#" onclick=''>LOGOUT</a> </div>
-            <img id="languageId"  onclick='switchLanguage()' src="resources/images/english.png" > <!-- Switch language--->   
         </div>
 
     </header>
@@ -45,23 +36,14 @@
     <!---------------MAIN---------------->
     <div class='main'>
         <!------LEFT FILTER----------->
-        <div class='filterBox'>
-            <img class="filterStar" src="resources/img/vip/filter-star.png"> <!-- ? Now is display:none--->    
-            <img class="filter1" src="resources/img/user/filter1.png"> 
-            <img class="filter2" src="resources/img/user/filter2.png"> 
+        <div class='filterBox' id='filterBox'>
+            <button class='filter1' onclick='list_selected(this)'></button>
+            <button class='filter1' onclick='list_selected(this)'></button>
+            <button class='filter1' onclick='list_selected(this)'></button>
+            <button class='filter1' onclick='list_selected(this)'></button>
+            <button class='filter1' onclick='list_selected(this)'></button>
+            <button class='filter1' onclick='list_selected(this)'></button>
         </div>
-
-        <!------RIGHT CONTAINER BOX---------->
-        <div class='rightContainer'>
-            <!-------------BANNER-------->
-            <img class="vipBanner" src="resources/img/vip/banner.png"> <!-------------NOT IMPLEMENTED YET-------->
-            <!-------------DRINKS CONTAINER BOX-------->
-            <div class='groupDrinkBox' id='groupDrinkBox'></div>
-            <img class="filterStar" src="resources/images/VIP/filter-star.png"> <!-- ? Now is display:none--->    
-            <img class="filter1" src="resources/images/User/filter1.png"> 
-            <img class="filter2" src="resources/images/User/filter2.png"> 
-        </div>
-
 
         <!------RIGHT CONTAINER BOX---------->
         <div class='rightContainer'>
@@ -69,226 +51,16 @@
             <img class="vipBanner" src="resources/images/VIP/banner.png">
             <!----DRINK PRODUCT BOX------>
             <div class='productBox'>
-
-
                <!----VIP DRINK--? currently hardcode-->
-                <div class='groupDrinkBox vipFavourite'>
-                    <h2>Favourite</h2>
-                    <div class='singleDrinkBox'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 8.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starAlwaysFull" src="resources/images/VIP/filter-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 16.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starAlwaysFull" src="resources/images/VIP/filter-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 1.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starAlwaysFull" src="resources/images/VIP/filter-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 12.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starAlwaysFull" src="resources/images/VIP/filter-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 9.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starAlwaysFull" src="resources/images/VIP/filter-star.png">
-                    </div> 
-
+                <div class='groupDrinkBox vipFavourite' id="vipSelected">
                 </div>
 
-                 <!----CIDER----->
-                 <div class='groupDrinkBox '>
-                    <h2>Cider</h2>
-                    <div class='singleDrinkBox product0'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 0.png">
-                        <p class='singleDrinkText'>Mango cider</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH ?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product1'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 1.png">
-                        <p class='singleDrinkText'>Stawberry cider</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH ?Now is display:none. --->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product2'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 2.png">
-                        <p class='singleDrinkText'>Blueberry cider</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH ?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
+                 <!----DRINKS, THIS SHOULD BE SEARCHABLE----->
+                 <div class='groupDrinkBox ' id='groupDrinkBox'>                
                 </div>
-
-                 <!----JUICE-->
-                 <div class='groupDrinkBox '>
-                    <h2>Juice</h2>
-                    <div class='singleDrinkBox product3'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 3.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH ?Now is display:none. --->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product4'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 4.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH ?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product5'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 5.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!--VIPSWITCH ?Now is display:none. --->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product6'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 6.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH?Now is display:none. --->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product7'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 7.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!--VIPSWITCH ?Now is display:none--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div> 
-
-                </div>
-
-                 <!----BEER---->
-                 <div class='groupDrinkBox'>
-                    <h2>Beer</h2>
-                    <div class='singleDrinkBox product8'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 8.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product9'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 9.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product10'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 10.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!--VIPSWITCH ?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product11'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 11.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!--VIPSWITCH ?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product12'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 12.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div> 
-
-                </div> 
-                <!----Fresh---->
-                <div class='groupDrinkBox '>
-                    <h2>Fresh</h2>
-                    <div class='singleDrinkBox product13'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 13.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product14'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 14.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product15'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 15.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product16'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 16.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div>
-                
-                    <div class='singleDrinkBox product17'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 17.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div> 
-
-                    <div class='singleDrinkBox product18'>
-                        <img class='singleDrinkImg' src="resources/images/User/drinks/Group 18.png">
-                        <p class='singleDrinkText'>xxxxxx</p>
-                        <p class='singleDrinkText'>20 KR</p>
-                        <img class="starFull" src="resources/images/VIP/filter-star.png"><!-- VIPSWITCH ?Now is display:none.--->
-                        <img class="starEmpty" src="resources/images/VIP/empty-star.png">
-                    </div> 
-
-                </div>
-
-                
-
             </div>
-
         </div>
-
     </div>
- 
+
 </body>
 </html>

@@ -50,6 +50,19 @@ header{
     border-radius: 50%;
     float: left;
 }
+
+/* HEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHERE*/
+/* HEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHERE*/
+/* HEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHERE*/
+/* HEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHERE*/
+.basketElement{ 
+    background-color:blue;
+}
+/* HEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHERE*/
+/* HEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHERE*/
+/* HEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHERE*/
+/* HEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHEREHERE*/
+
 .subTotal{
     float: left;
     margin: 38px 40px 36.8px 11px;
@@ -109,14 +122,13 @@ header{
 .main{
    overflow: hidden;
    width: 100%;
-   margin-top: 200px !important;
+   margin-top: 150px !important;
 }
 /*----------FILTER-----------*/
 .filterBox{
     float: left;
-    min-width: 4%;
-    height: auto;
-    margin-left: 40px;
+    width: 4% ;
+    height: 573px;
     border-radius: 15px;
     background-color: #ffd130;
     position: fixed;
@@ -127,23 +139,21 @@ header{
 .filterStar{
     width: 43px;
     height: 48px;
-    margin: 25px  auto;
+    margin:25px  auto ;
     display: block;
     display: none; /*-----VIPSWITCH----*/
 }
-.filterWrapper {
-    display: flex;
-    flex-direction: column;
-}
 .filter1{
-    display: block;
+    position: relative;
     font-family: IcoFont;
     font-size: 36px;
     color: #4b4b4b;
     background-color: #ffd130;
-    margin: 10px auto;
+    margin: 25px auto;
     object-fit: contain;
+    display: block;
 }
+
 .filter2{
     width: 19px;
     height: 43px;
@@ -194,20 +204,32 @@ h2{
     padding: 0.5%;
     float: left;
     position: relative;
+
 }
-.singleDrinkText{
-    width: 222px;
-    height: 25px;
-    font-family: Basic;
-    font-size: 24px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000000;
+.singleDrinkBox p{
+    padding-left: 1.5rem;
+    margin: 10px;
 }
+.singleDrinkBox img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.addToCartButton{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 30px;
+    margin-top: 0;
+    border: #ffd130;
+    background-color: #ffd130;
+    font-size : 16px;
+    margin-bottom: 2rem;
+}
+
 .vipFavourite{
    display: none;
  /*-----VIPSWITCH----*/

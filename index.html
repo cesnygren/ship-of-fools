@@ -1,142 +1,245 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <title>Ship of the Fools</title>
-    <script type="text/javascript" src="resources/js/loader.js"></script>
-    <script type="text/javascript" src="resources/js/beverages.js"></script>
-    <script type="text/javascript" src="resources/js/beverages_eng.js"></script>
-    <link rel="stylesheet" type="text/css" href="resources/css/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/pop-up.css">
-    <script type="text/javascript" src="resources/js/dictionary.js"></script>
-    <script type="text/javascript" src="resources/js/jquery-1.11.1.js"></script>
-    <script type="text/javascript" src="resources/js/model.js"></script>
-    <script type="text/javascript" src="resources/js/DBLoaded.js"></script>
-    <script type="text/javascript" src="resources/js/control.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Basic&display=swap" rel="stylesheet"> <!--FONT--->
-</head>
-<body>
-    <!---------------HEADER---------------->
-    <header >
-        <div class="mainHeader">
-            <a href="index.html"><img class="logo" src="resources/img/logo.png"></a>
-            <div class="shoppingCartBox">
-                <!-- Cart button -->
-                <button onclick="document.getElementById('myCart').style.display='block'" style="width:auto;" class="shoppingCart">&#xefe7;</button>
+//============================== Switch language ===============================
+function switchLanguage () {
+  if (language=='en'){// English
+     document.getElementById("languageId").src="./resources/img/swedish.png";  
+     language='se';
+     update_language();
+     update_total();
+  }else{
+    document.getElementById("languageId").src="./resources/img/english.png";
+    language='en';
+    update_language();
+    update_total();
+  }// Swedish
+}
 
-                <!-- The Cart -->
-                <div id="myCart" class="popCartBg">
-                <!-- Cart content -->
+function update_language(){
+  keys = lanDict['keys'];
+  for (idx in keys) {
+      key = keys[idx];
+      $("#" + key).text(get_string(key));
+  };
+}
+//==============================
 
-                <div class="popCartContent cartAnimation">
+//Test function
+function getInfo() {
+var username = document.getElementById("uname").value
+var password = document.getElementById("psw").value
+var login = false
+//console.log("Your username is" + username + " and password is" + password)
+for(i = 0; i < DB.users.length; i++){
+    if(username == DB.users[i].username && password == DB.users[i].password) { login = true }
+ }
+   // return console.log("Your username and/or password is wrong" + Username +" " + Password)
+   // for(i = 0; i < DB.users.length; i++)
+   // if(username != DB.users[i].username && password != DB.users[i].password) {  window.location.href = "https://datahahah.ytmnd.com"}
+ //else {  window.location.href = "https://datahahah.ytmnd.com"}  - inget av det här funkar, else tar över if-funktionen.
 
-                    <!-- Close button (x) -->
-                    <span onclick="document.getElementById('myCart').style.display='none'" class="closeCart" title="Close Cart">&times;</span>
-
-                    <!-- Content here -->
-                    
-                    <div class="cartHeading">Current order</div>
-                    <div class="cartItemContainer">
-                        <div id="cartItems" class="basketElement"></div>
-                    </div>
-                    <div class="cartTotalContainer">
-                        <div id="cartSubTotal" class="cartTotal">Total: 123.45kr</div>
-                    </div>
-
-                    <div class="payments">
-                    <button type="button" class="payBtn">Swish</button>
-                    <button type="button" class="payBtn">Credit Card</button>
-                    </div>
-                </div>
-                </div>
-                <div class="subTotal" id="total"></div>
-            </div>
-            <!-- Login Button -->
-            <button onclick="document.getElementById('myLogin').style.display='block'" style="width:auto;" class="loginButton">VIP Login</button>
-
-            <!-- Login Content Start -->
-            <div id="myLogin" class="popLoginBg">
-            
-            <!-- Login Form. Please link the 'action' to the control/model -->
-            <form class="popLoginContent loginAnimation" action="" method="post">
-                <div class="imgcontainer">
-                <div id="vip-login" class="vip-login-heading">Vip Login</div>
-                <span onclick="document.getElementById('myLogin').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="resources/img/pirate.png" alt="Avatar" class="avatar">
-                </div>
-
-                <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" id="uname" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" id="psw" required>
-                    
-                <button type="button" onclick="getInfo()"; userDetails(userName) id="loginbutton">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" id="remember"> Remember me
-                </label>
-                </div>
-                <onclick="validate"()>
-                <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('myLogin').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw"><a href="#">Forgot password?</a></span>
-                </div>
-            </form>
-            <script>
-            // Get the modal
-            var loginModal = document.getElementById('myLogin');
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == loginModal) {
-                    loginModal.style.display = "none";
-                }
-            }
-            </script>
-            </div>
-
-<!-------------NOT IMPLEMENTED YET-------->
-            <div class="loginButtonVIP"><a href="#" onclick="">Hello, Bob &nbsp  300 credits &nbsp </a>  <a href="#" onclick="">LOGOUT</a> </div>
-<!-------------NOT IMPLEMENTED YET-------->
-
-            <img id="languageId"  onclick="switchLanguage()" src="resources/img/english.png" > <!-- Switch language--->   
-        </div>
-
-    </header>
-
-    <!---------------MAIN---------------->
-    <div class="main">
+    //window.location.href = "vipProfile.html"
 
 
-</script>
-        <!------LEFT FILTER----------->
-        <div class="filterBox">
-            <div class="filterWrapper" id="filterBox">
-                <button class="filter1" onclick="list_selected(this)">&#xf000;</button>
-                <button class="filter1" onclick="list_selected(this)">&#xeb90;</button>
-                <button class="filter1" onclick="list_selected(this)">&#xef3d;</button>
-                <button class="filter1" onclick="list_selected(this)">&#xeeb9;</button>
-                <button class="filter1" onclick="list_selected(this)">&#xeb44;</button>
-                <button class="filter1" onclick="list_selected(this)">&#xeb56;</button>
-            </div>
-        </div>
-        <!------RIGHT CONTAINER BOX---------->
-        <div class="rightContainer">
-            <!-------------BANNER-------->
-            <img class="vipBanner" src="resources/images/VIP/banner.png">
-            <!----DRINK PRODUCT BOX------>
-            <div class="productBox">
-               <!----VIP DRINK--? currently hardcode-->
-                <div class="groupDrinkBox vipFavourite" id="vipSelected">
-                </div>
+    if (login == true) {window.location.href = "vipProfile.html"}
+    else { window.location.href = "https://datahahah.ytmnd.com"}
+ // - inget av det här funkar, else tar över if-funktionen.
 
-                 <!----DRINKS, THIS SHOULD BE SEARCHABLE----->
-                 <div class="groupDrinkBox " id="groupDrinkBox">
-                </div>
-            </div>
-        </div>
-    </div>
 
-</body>
-</html>
+    }
+
+function userDetails(userName) {
+    var userCollect = [];
+    var userID;
+    var userIndex;
+    var account;
+
+    // First we find the user ID of the selected user. We also save the index number for the record in the JSON
+    // structure.
+    //
+    for (i = 0; i < DB.users.length; i++) {
+        if (DB.users[i].username == userName) {
+            userID = DB.users[i].user_id;
+            userIndex = i;
+        };
+    };
+
+    // We get the current account status from another table in the database, account. We store this in
+    // a variable here for convenience.
+    //
+    for (i = 0; i < DB.account.length; i++) {
+        if (DB.account[i].user_id == userID) {
+            account = DB.account[i].creditSEK;
+        }
+    };
+
+    // This is the way to add the details you want from the db into your own data structure.
+    // If you want to change the details, then just add or remove items accordingly below.
+    userCollect.push(
+        DB.users[userIndex].user_id,
+        DB.users[userIndex].username,
+        DB.users[userIndex].first_name,
+        DB.users[userIndex].last_name,
+        DB.users[userIndex].email,
+        account
+    );
+
+    return userCollect;
+}
+
+//============================== Purchase Items ===============================
+
+function add_to_cart (prod){
+  var newElement = add_element_to_cart(prod);
+  document.getElementById('cartItems').appendChild(newElement);
+  update_total();
+}
+
+function remove_cart_items(id){
+  var myNode = document.getElementById('cartItems'); // find the cart
+  for (i = 0; i < myNode.childNodes.length; i++) { 
+    if (myNode.childNodes[i].id == id){ //if the cart item is the same as the id we want
+      myNode.removeChild(myNode.childNodes[i]);  // remove from cart 
+    }
+  }
+  update_total();
+}
+
+function change_quantity(){
+  //get content from page 
+  //perform operation 
+  //update model 
+  //update view
+  update_total();
+}
+
+function update_total(){
+  var total = 0;
+  var myNode = document.getElementById('cartItems'); // find the cart
+  for (i = 0; i < myNode.childNodes.length; i++) { 
+    if (isFinite(myNode.childNodes[i].childNodes[3].value) && myNode.childNodes[i].childNodes[3].value > 0){
+      var itemTotal = multiply(myNode.childNodes[i].childNodes[1].textContent, myNode.childNodes[i].childNodes[3].value);
+      total = add(total, itemTotal);
+      }
+      else{
+      total = 0;
+      }
+  }
+  var popupTot = document.getElementById('cartSubTotal');
+  var pageTot = document.getElementById('total');
+  pageTot.textContent = lanDict[language].total + " " + total.toFixed(2) + ' kr';
+  popupTot.textContent = pageTot.textContent;
+}
+
+// Work in progress
+function show_drink_dets(prod){
+
+  console.log (prod);
+
+}
+
+//============================== Sort and Select Catagories ========================
+function set_categories (){
+  var children = document.getElementById("filterBox").children;
+  for (i = 0; i < children.length; i++){
+    children[i].id = topCategory[i];
+  }
+}
+
+function list_selected(category){
+  var category = category.id;
+  remove_prod(); //clear list
+  var list = selectedCategory(category);
+  var iter = list.length;
+  if (iter > cnst['max_list_item']){ iter = cnst['max_list_item']};
+  for (i = 0; i < iter; i++){
+    drink_box(list[i]);
+  }
+}
+
+function remove_prod(){
+  var myNode = document.getElementById("groupDrinkBox");
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.lastChild);
+  }
+  //removes the prod boxes.
+}
+
+//============================== Create item box ========================
+function drink_box(prod) {
+  var prodDiv = prod.articleid; //name the div
+  var dst = "groupDrinkBox"; //get the name of the head div
+
+  var div = document.createElement('div'); //create the div
+  div.className = 'singleDrinkBox';  //create the div class name for css code
+  div.id = prodDiv; //make the prod id into the div id
+
+  var img = document.createElement('img'); //for storing the img
+  var name = document.createElement('p'); //for storing the name
+  var price = document.createElement('p'); //for storing the price
+  var addToCartButton = document.createElement('button');  //for the add to cart button 
+
+  img.src = prod.img;
+  name.textContent = prod.name + " (" + prod.alcoholstrength + ")"; 
+  price.textContent = "SEK " + prod.priceinclvat;
+  document.getElementById(dst).appendChild(div);
+  addToCartButton.textContent = 'Add to Cart';
+  addToCartButton.className = 'addToCartButton';
+
+  //functionalities
+  img.onclick = function() {show_drink_dets(prod)}; // for showing drinks details 
+  addToCartButton.onclick = function() {add_to_cart(prod)}; //add to cart function
+
+  //add all elements to the div 
+  document.getElementById(prodDiv).appendChild(img); 
+  document.getElementById(prodDiv).appendChild(name);  
+  document.getElementById(prodDiv).appendChild(price); 
+  document.getElementById(prodDiv).appendChild(addToCartButton);
+}
+
+//=============================== Create cart item ===========================
+
+function add_element_to_cart(prod){
+  var div = document.createElement('div'); // added element 
+  div.className = "basketElement";
+  div.id = "Basket Item" + prod.nr;
+
+  var name = document.createElement('itemTitle');
+  var price = document.createElement('itemPrice');
+  var quantity = document.createElement('input');
+  var deleteButton = document.createElement('button');
+  var divider = document.createElement('hr');
+
+  price.id = 'price';
+  quantity.id = 'quantity';
+  deleteButton.onclick = function() {remove_cart_items(div.id)};
+  name.textContent = prod.name;
+  price.textContent = prod.priceinclvat;
+  quantity.defaultValue = 1;
+  quantity.onkeyup = function(){update_total()};
+  deleteButton.textContent = "Remove";
+
+  div.appendChild(name);
+  div.appendChild(price);
+  div.appendChild(deleteButton);
+  div.appendChild(quantity);
+  div.appendChild(divider);
+  return div;
+}
+
+//============================== Update and set View ========================
+
+function update_view() {
+  // place all the products 
+  for (i = 0; i < 12; i++){
+    var prod = get_product(i); //THIS MAY NEED TO BE CHANGED TO JSON
+    drink_box(prod);
+  }
+  set_categories ();
+  update_language();
+  update_total();
+}
+
+// We don't update the view the first time until the document is ready
+// loading.
+$(document).ready(function() {
+  update_view();
+})
